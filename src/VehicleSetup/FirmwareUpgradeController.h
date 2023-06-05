@@ -38,7 +38,8 @@ public:
             PX4FlowPX4,
             PX4FlowAPM,
             SiKRadio,
-            SingleFirmwareMode
+            SingleFirmwareMode,
+            PX4FlowH7
         } AutoPilotStackType_t;
 
         typedef enum {

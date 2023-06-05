@@ -224,11 +224,19 @@ SetupPage {
                                         return
                                     }
                                 }
+                                //[w-x-me]20203-06-02 add DroneyeeZYFCH7
+                                if(droneyeeStack.checked)
+                                {
+                                    console.log("[w-x-me] Customer zyfc-h7")
+                                    controller.flashFirmwareUrl("C:\PX4PSP\RflySimAPIs\Exp02_FlightControl\e6-PositionCtrl\e6.4\zyfc-h7_1.12.3-0.0.2.px4")
+                                    return
+                                }
                             }
                             //-- If custom, get file path
                             if (firmwareBuildType === FirmwareUpgradeController.CustomFirmware) {
                                 customFirmwareDialog.openForLoad()
                             } else {
+                                console.log("w-x-me10:stack=",stack,",firmwareBuildType=",firmwareBuildType,", vehicleType=",vehicleType)
                                 controller.flash(stack, firmwareBuildType, vehicleType)
                             }
                         }
@@ -272,6 +280,11 @@ SetupPage {
                         ListElement {
                             text:           qsTr("ArduPilot")
                             stackType:   FirmwareUpgradeController.PX4FlowAPM
+                        }
+                        //[w-x-me]20203-06-02 add DroneyeeZYFCH7
+                        ListElement {
+                            text:           "DroneyeeZYFC-H7"
+                            stackType:   FirmwareUpgradeController.PX4FlowH7
                         }
                     }
 
@@ -343,6 +356,18 @@ SetupPage {
                             QGCRadioButton {
                                 id:             apmFlightStack
                                 text:           qsTr("ArduPilot")
+                                font.bold:      !_defaultFirmwareIsPX4
+                                checked:        !_defaultFirmwareIsPX4
+
+                                onClicked: {
+                                    _defaultFirmwareFact.rawValue = _defaultFimwareTypeAPM
+                                    firmwareVersionChanged(firmwareBuildTypeList)
+                                }
+                            }
+                            //[w-x-me]20203-06-02 add DroneyeeZYFCH7
+                            QGCRadioButton {
+                                id:             droneyeeStack
+                                text:           "DroneyeeZYFC-H7"
                                 font.bold:      !_defaultFirmwareIsPX4
                                 checked:        !_defaultFirmwareIsPX4
 
