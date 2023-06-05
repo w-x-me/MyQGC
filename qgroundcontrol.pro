@@ -33,6 +33,11 @@ QGCROOT  = $$PWD
 
 QML_IMPORT_PATH += $$PWD/src/QmlControls
 
+#Modify the problem that the Chinese cannot set the navigation point 20230529
+TRANSLATIONS+=qgc_json_zh_CN.ts#后面你可以加你想要翻译的各种版本
+CONFIG += localize_deployment
+SYMBIAN_SUPPORTED_LANGUAGES += zh_CN
+SYMBIAN_LANG.zh_CN = 31
 #
 # OS Specific settings
 #
